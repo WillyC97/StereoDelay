@@ -266,14 +266,14 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
 
 
 
-//    Image image_sslRotary = ImageCache::getFromMemory(BinaryData::sslknob_png, BinaryData::sslknob_pngSize);
-//    crossfeedLeft.setImage(image_sslRotary, image_sslRotary.getHeight() / image_sslRotary.getWidth(), false);
-//    crossfeedLeft.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
-//    crossfeedLeft.setRange(0, 100);
-//    crossfeedLeft.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
-//
-//    addAndMakeVisible(&crossfeedLeft);
-//    crossfeedLeft.addListener(this);
+    Image image_sslRotary = ImageCache::getFromMemory(BinaryData::sslknob_png, BinaryData::sslknob_pngSize);
+    crossfeedLeft.setImage(image_sslRotary, image_sslRotary.getHeight() / image_sslRotary.getWidth(), false);
+    crossfeedLeft.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
+    crossfeedLeft.setRange(0, 100);
+    crossfeedLeft.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
+
+    addAndMakeVisible(&crossfeedLeft);
+    crossfeedLeft.addListener(this);
 
 
     //left range slider
@@ -343,7 +343,7 @@ void WillStereoDelayAudioProcessorEditor::resized()
 
 
     Bypass.setBounds(328, 24, 64, 64);
-    //crossfeedLeft.setBounds (176, 280, 96, 96);
+    crossfeedLeft.setBounds (224, 328, 64, 64);
 
 
     //Left Range Slider

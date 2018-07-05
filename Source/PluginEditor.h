@@ -23,7 +23,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 #include "GUI/FilmstripToggleButton.h"
-//#include "GUI/FilmstripSlider.h"
+#include "GUI/FilmstripSlider.h"
 #include "GUI/RangeSlider.h"
 #include <string.h>
 
@@ -100,8 +100,8 @@ private:
     void timerCallback() override;
 
     FilmstripToggleButton Bypass;
-    //FilmstripSlider crossfeedLeft;
-    //Image image_sslRotary;
+    FilmstripSlider crossfeedLeft;
+    Image image_sslRotary;
     Image image_bypass;
     RangeSlider leftRangeSlider;
     RangeSlider rightRangeSlider;
