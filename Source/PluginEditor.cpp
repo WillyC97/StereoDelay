@@ -61,7 +61,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     leftFdbckSlider->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     leftFdbckSlider->addListener (this);
 
-    leftFdbckSlider->setBounds (72, 328, 112, 96);
+    leftFdbckSlider->setBounds (48, 328, 112, 96);
 
     addAndMakeVisible (rightFdbckSlider = new Slider ("rightFdbckSlider"));
     rightFdbckSlider->setRange (0, 100, 1);
@@ -70,7 +70,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     rightFdbckSlider->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     rightFdbckSlider->addListener (this);
 
-    rightFdbckSlider->setBounds (560, 328, 96, 96);
+    rightFdbckSlider->setBounds (536, 328, 96, 96);
 
     addAndMakeVisible (crotchetButton = new ImageButton ("crotchet button"));
     crotchetButton->setButtonText (TRANS("new button"));
@@ -100,7 +100,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
                              ImageCache::getFromMemory (quaver_png, quaver_pngSize), 0.999f, Colour (0x00000000),
                              ImageCache::getFromMemory (quaver_png, quaver_pngSize), 1.000f, Colour (0xff999999),
                              Image(), 1.000f, Colour (0x00000000));
-    quaverButton->setBounds (80, 40, 48, 48);
+    quaverButton->setBounds (72, 48, 32, 32);
 
     addAndMakeVisible (semiquaverButton = new ImageButton ("semi quaver button"));
     semiquaverButton->setButtonText (TRANS("new button"));
@@ -110,7 +110,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
                                  ImageCache::getFromMemory (semiquaver_png, semiquaver_pngSize), 1.000f, Colour (0x00000000),
                                  ImageCache::getFromMemory (semiquaver_png, semiquaver_pngSize), 1.000f, Colour (0xff999999),
                                  Image(), 1.000f, Colour (0x00000000));
-    semiquaverButton->setBounds (40, 88, 40, 40);
+    semiquaverButton->setBounds (48, 88, 40, 40);
 
     addAndMakeVisible (minimButtonRight = new ImageButton ("minim button"));
     minimButtonRight->setButtonText (TRANS("new button"));
@@ -120,7 +120,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
                                  ImageCache::getFromMemory (minim_png, minim_pngSize), 1.000f, Colour (0x00999999),
                                  ImageCache::getFromMemory (minim_png, minim_pngSize), 1.000f, Colour (0xff999999),
                                  Image(), 1.000f, Colour (0x00000000));
-    minimButtonRight->setBounds (640, 104, 40, 32);
+    minimButtonRight->setBounds (640, 104, 32, 32);
 
     addAndMakeVisible (crotchetButtonRight = new ImageButton ("crotchet button"));
     crotchetButtonRight->setButtonText (TRANS("new button"));
@@ -130,7 +130,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
                                     ImageCache::getFromMemory (kisspngquarternotemusicalnoteeighthnoterestmusicnotes5ad2c34d6918e6_3884611415237619974305_png, kisspngquarternotemusicalnoteeighthnoterestmusicnotes5ad2c34d6918e6_3884611415237619974305_pngSize), 1.000f, Colour (0x00000000),
                                     ImageCache::getFromMemory (kisspngquarternotemusicalnoteeighthnoterestmusicnotes5ad2c34d6918e6_3884611415237619974305_png, kisspngquarternotemusicalnoteeighthnoterestmusicnotes5ad2c34d6918e6_3884611415237619974305_pngSize), 1.000f, Colour (0xff999999),
                                     Image(), 1.000f, Colour (0x00000000));
-    crotchetButtonRight->setBounds (616, 64, 40, 32);
+    crotchetButtonRight->setBounds (624, 56, 32, 32);
 
     addAndMakeVisible (quaverButtonRight = new ImageButton ("quaver button"));
     quaverButtonRight->setButtonText (TRANS("new button"));
@@ -140,7 +140,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
                                   ImageCache::getFromMemory (quaver_png, quaver_pngSize), 0.999f, Colour (0x00000000),
                                   ImageCache::getFromMemory (quaver_png, quaver_pngSize), 1.000f, Colour (0xff999999),
                                   Image(), 1.000f, Colour (0x00000000));
-    quaverButtonRight->setBounds (560, 64, 32, 32);
+    quaverButtonRight->setBounds (552, 56, 32, 32);
 
     addAndMakeVisible (semiquaverButtonRight = new ImageButton ("semi quaver button"));
     semiquaverButtonRight->setButtonText (TRANS("new button"));
@@ -201,7 +201,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     addAndMakeVisible (leftDelayLabel = new Label ("Left label",
                                                    String()));
     leftDelayLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
-    leftDelayLabel->setJustificationType (Justification::centredLeft);
+    leftDelayLabel->setJustificationType (Justification::centred);
     leftDelayLabel->setEditable (false, false, false);
     leftDelayLabel->setColour (TextEditor::textColourId, Colours::black);
     leftDelayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
@@ -211,12 +211,12 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     addAndMakeVisible (rightDelayLabel = new Label ("Left label",
                                                     String()));
     rightDelayLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
-    rightDelayLabel->setJustificationType (Justification::centredLeft);
+    rightDelayLabel->setJustificationType (Justification::centred);
     rightDelayLabel->setEditable (false, false, false);
     rightDelayLabel->setColour (TextEditor::textColourId, Colours::black);
     rightDelayLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    rightDelayLabel->setBounds (568, 176, 56, 24);
+    rightDelayLabel->setBounds (576, 176, 56, 24);
 
     addAndMakeVisible (leftDelayTimeslider = new Slider ("LeftDelayTimeslider"));
     leftDelayTimeslider->setRange (0, 200000, 1);
@@ -242,7 +242,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     rightDelayTimeslider->setColour (Slider::rotarySliderOutlineColourId, Colour (0xff263238));
     rightDelayTimeslider->addListener (this);
 
-    rightDelayTimeslider->setBounds (552, 80, 88, 88);
+    rightDelayTimeslider->setBounds (560, 80, 88, 88);
 
 
     //[UserPreSize]
@@ -419,7 +419,7 @@ void WillStereoDelayAudioProcessorEditor::sliderValueChanged (Slider* sliderThat
     {
         *processor.rightLPF_param = sliderThatWasMoved->getMaxValue();
         *processor.rightHPF_param = sliderThatWasMoved->getMinValue();
-        
+
     }
     //[/UsersliderValueChanged_Post]
 }
@@ -671,13 +671,13 @@ BEGIN_JUCER_METADATA
           textBoxWidth="80" textBoxHeight="20" skewFactor="1.00000000000000000000"
           needsCallback="1"/>
   <SLIDER name="leftFdbckSlider" id="cf600b01a277d80f" memberName="leftFdbckSlider"
-          virtualName="" explicitFocusOrder="0" pos="72 328 112 96" textboxoutline="8e989b"
+          virtualName="" explicitFocusOrder="0" pos="48 328 112 96" textboxoutline="8e989b"
           min="0.00000000000000000000" max="100.00000000000000000000" int="1.00000000000000000000"
           style="RotaryVerticalDrag" textBoxPos="TextBoxBelow" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1.00000000000000000000"
           needsCallback="1"/>
   <SLIDER name="rightFdbckSlider" id="629b24730594a142" memberName="rightFdbckSlider"
-          virtualName="" explicitFocusOrder="0" pos="560 328 96 96" textboxoutline="8e989b"
+          virtualName="" explicitFocusOrder="0" pos="536 328 96 96" textboxoutline="8e989b"
           min="0.00000000000000000000" max="100.00000000000000000000" int="1.00000000000000000000"
           style="RotaryVerticalDrag" textBoxPos="TextBoxBelow" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1.00000000000000000000"
@@ -697,35 +697,35 @@ BEGIN_JUCER_METADATA
                colourOver="ff999999" resourceDown="" opacityDown="1.00000000000000000000"
                colourDown="0"/>
   <IMAGEBUTTON name="quaver button" id="8bc9c2380ebf1d15" memberName="quaverButton"
-               virtualName="" explicitFocusOrder="0" pos="80 40 48 48" buttonText="new button"
+               virtualName="" explicitFocusOrder="0" pos="72 48 32 32" buttonText="new button"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
                resourceNormal="quaver_png" opacityNormal="0.99941408634185791016"
                colourNormal="0" resourceOver="quaver_png" opacityOver="1.00000000000000000000"
                colourOver="ff999999" resourceDown="" opacityDown="1.00000000000000000000"
                colourDown="0"/>
   <IMAGEBUTTON name="semi quaver button" id="cfe8f1009e955dd8" memberName="semiquaverButton"
-               virtualName="" explicitFocusOrder="0" pos="40 88 40 40" buttonText="new button"
+               virtualName="" explicitFocusOrder="0" pos="48 88 40 40" buttonText="new button"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
                resourceNormal="semiquaver_png" opacityNormal="1.00000000000000000000"
                colourNormal="0" resourceOver="semiquaver_png" opacityOver="1.00000000000000000000"
                colourOver="ff999999" resourceDown="" opacityDown="1.00000000000000000000"
                colourDown="0"/>
   <IMAGEBUTTON name="minim button" id="44901090fcfda0be" memberName="minimButtonRight"
-               virtualName="" explicitFocusOrder="0" pos="640 104 40 32" buttonText="new button"
+               virtualName="" explicitFocusOrder="0" pos="640 104 32 32" buttonText="new button"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
                resourceNormal="minim_png" opacityNormal="1.00000000000000000000"
                colourNormal="999999" resourceOver="minim_png" opacityOver="1.00000000000000000000"
                colourOver="ff999999" resourceDown="" opacityDown="1.00000000000000000000"
                colourDown="0"/>
   <IMAGEBUTTON name="crotchet button" id="a4b56fae982b0aff" memberName="crotchetButtonRight"
-               virtualName="" explicitFocusOrder="0" pos="616 64 40 32" buttonText="new button"
+               virtualName="" explicitFocusOrder="0" pos="624 56 32 32" buttonText="new button"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
                resourceNormal="kisspngquarternotemusicalnoteeighthnoterestmusicnotes5ad2c34d6918e6_3884611415237619974305_png"
                opacityNormal="1.00000000000000000000" colourNormal="0" resourceOver="kisspngquarternotemusicalnoteeighthnoterestmusicnotes5ad2c34d6918e6_3884611415237619974305_png"
                opacityOver="1.00000000000000000000" colourOver="ff999999" resourceDown=""
                opacityDown="1.00000000000000000000" colourDown="0"/>
   <IMAGEBUTTON name="quaver button" id="521d3d385d214930" memberName="quaverButtonRight"
-               virtualName="" explicitFocusOrder="0" pos="560 64 32 32" buttonText="new button"
+               virtualName="" explicitFocusOrder="0" pos="552 56 32 32" buttonText="new button"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
                resourceNormal="quaver_png" opacityNormal="0.99941408634185791016"
                colourNormal="0" resourceOver="quaver_png" opacityOver="1.00000000000000000000"
@@ -750,12 +750,12 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="88 160 56 24" edTextCol="ff000000"
          edBkgCol="0" labelText="" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
-         kerning="0.00000000000000000000" bold="0" italic="0" justification="33"/>
+         kerning="0.00000000000000000000" bold="0" italic="0" justification="36"/>
   <LABEL name="Left label" id="6fbb3e4fae8ef18c" memberName="rightDelayLabel"
-         virtualName="" explicitFocusOrder="0" pos="568 176 56 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="576 176 56 24" edTextCol="ff000000"
          edBkgCol="0" labelText="" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
-         kerning="0.00000000000000000000" bold="0" italic="0" justification="33"/>
+         kerning="0.00000000000000000000" bold="0" italic="0" justification="36"/>
   <SLIDER name="LeftDelayTimeslider" id="5ca0d66952a5c03e" memberName="leftDelayTimeslider"
           virtualName="" explicitFocusOrder="0" pos="72 72 88 88" bkgcol="ff449c3a"
           thumbcol="37c84242" trackcol="ff181f22" rotarysliderfill="ff181f22"
@@ -764,7 +764,7 @@ BEGIN_JUCER_METADATA
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.00000000000000000000"
           needsCallback="1"/>
   <SLIDER name="RightDelayTimeslider" id="3ecf61bcb9ef3c99" memberName="rightDelayTimeslider"
-          virtualName="" explicitFocusOrder="0" pos="552 80 88 88" bkgcol="ff449c3a"
+          virtualName="" explicitFocusOrder="0" pos="560 80 88 88" bkgcol="ff449c3a"
           thumbcol="37c84242" trackcol="ff181f22" rotarysliderfill="ff181f22"
           rotaryslideroutline="ff263238" min="0.00000000000000000000" max="200000.00000000000000000000"
           int="1.00000000000000000000" style="RotaryVerticalDrag" textBoxPos="NoTextBox"
