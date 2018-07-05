@@ -101,6 +101,8 @@ private:
 
     FilmstripToggleButton Bypass;
     FilmstripSlider crossfeedLeft;
+    FilmstripSlider leftFdbckSlider;
+    FilmstripSlider rightFdbckSlider;
     Image image_sslRotary;
     Image image_bypass;
     RangeSlider leftRangeSlider;
@@ -122,8 +124,6 @@ private:
     //==============================================================================
     ScopedPointer<Slider> leftMixSlider;
     ScopedPointer<Slider> rightMixSlider;
-    ScopedPointer<Slider> leftFdbckSlider;
-    ScopedPointer<Slider> rightFdbckSlider;
     ScopedPointer<ImageButton> crotchetButton;
     ScopedPointer<ImageButton> minimButton;
     ScopedPointer<ImageButton> quaverButton;

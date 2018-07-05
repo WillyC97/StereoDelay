@@ -54,24 +54,6 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
 
     rightMixSlider->setBounds (424, 112, 54, 200);
 
-    addAndMakeVisible (leftFdbckSlider = new Slider ("leftFdbckSlider"));
-    leftFdbckSlider->setRange (0, 100, 1);
-    leftFdbckSlider->setSliderStyle (Slider::RotaryVerticalDrag);
-    leftFdbckSlider->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
-    leftFdbckSlider->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
-    leftFdbckSlider->addListener (this);
-
-    leftFdbckSlider->setBounds (48, 328, 112, 96);
-
-    addAndMakeVisible (rightFdbckSlider = new Slider ("rightFdbckSlider"));
-    rightFdbckSlider->setRange (0, 100, 1);
-    rightFdbckSlider->setSliderStyle (Slider::RotaryVerticalDrag);
-    rightFdbckSlider->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
-    rightFdbckSlider->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
-    rightFdbckSlider->addListener (this);
-
-    rightFdbckSlider->setBounds (536, 328, 96, 96);
-
     addAndMakeVisible (crotchetButton = new ImageButton ("crotchet button"));
     crotchetButton->setButtonText (TRANS("new button"));
     crotchetButton->addListener (this);
@@ -255,38 +237,51 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     //[Constructor] You can add your own custom stuff here..
     startTimer (30);
 
-        //time sync button
+    Image image_sslRotary = ImageCache::getFromMemory(BinaryData::sslknob_png, BinaryData::sslknob_pngSize);
+
+    leftFdbckSlider.setImage(image_sslRotary, image_sslRotary.getHeight() / image_sslRotary.getWidth(), false);
+    leftFdbckSlider.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
+    leftFdbckSlider.setRange(0, 100);
+    leftFdbckSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
+    addAndMakeVisible(&leftFdbckSlider);
+    leftFdbckSlider.addListener(this);
+
+    rightFdbckSlider.setImage(image_sslRotary, image_sslRotary.getHeight() / image_sslRotary.getWidth(), false);
+    rightFdbckSlider.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
+    rightFdbckSlider.setRange(0, 100);
+    rightFdbckSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
+    addAndMakeVisible(&rightFdbckSlider);
+    rightFdbckSlider.addListener(this);
+
+
+    crossfeedLeft.setImage(image_sslRotary, image_sslRotary.getHeight() / image_sslRotary.getWidth(), false);
+    crossfeedLeft.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
+    crossfeedLeft.setRange(0, 100);
+    crossfeedLeft.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
+    addAndMakeVisible(&crossfeedLeft);
+    crossfeedLeft.addListener(this);
+
+
+
+
+
+
+//time sync button
         Image image_bypass = ImageCache::getFromMemory(BinaryData::switch_toggle_sub_png, BinaryData::SimpleEqualizer_bypass_pngSize);
         Bypass.setImage(image_bypass, image_bypass.getWidth() / image_bypass.getHeight());
         addAndMakeVisible(&Bypass);
         Bypass.addListener(this);
 
-
-
-
-
-
-    Image image_sslRotary = ImageCache::getFromMemory(BinaryData::sslknob_png, BinaryData::sslknob_pngSize);
-    crossfeedLeft.setImage(image_sslRotary, image_sslRotary.getHeight() / image_sslRotary.getWidth(), false);
-    crossfeedLeft.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
-    crossfeedLeft.setRange(0, 100);
-    crossfeedLeft.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
-
-    addAndMakeVisible(&crossfeedLeft);
-    crossfeedLeft.addListener(this);
-
-
     //left range slider
         addAndMakeVisible(&leftRangeSlider);
         leftRangeSlider.addListener(this);
 
-        //right slider slider
+    //right slider slider
         addAndMakeVisible(&rightRangeSlider);
         rightRangeSlider.addListener(this);
 
     leftDelayTimeslider->setSkewFactorFromMidPoint(40000);
     rightDelayTimeslider->setSkewFactorFromMidPoint(40000);
-
     //[/Constructor]
 }
 
@@ -297,8 +292,6 @@ WillStereoDelayAudioProcessorEditor::~WillStereoDelayAudioProcessorEditor()
 
     leftMixSlider = nullptr;
     rightMixSlider = nullptr;
-    leftFdbckSlider = nullptr;
-    rightFdbckSlider = nullptr;
     crotchetButton = nullptr;
     minimButton = nullptr;
     quaverButton = nullptr;
@@ -316,7 +309,6 @@ WillStereoDelayAudioProcessorEditor::~WillStereoDelayAudioProcessorEditor()
 
 
     //[Destructor]. You can add your own custom destruction code here..
-
     //[/Destructor]
 }
 
@@ -339,19 +331,23 @@ void WillStereoDelayAudioProcessorEditor::resized()
 
     //[UserResized] Add your own custom resize handling here..
 
-    //time sync button
-
-
+        //time sync button
     Bypass.setBounds(328, 24, 64, 64);
+
+        //crossfeed button
     crossfeedLeft.setBounds (224, 328, 64, 64);
 
+    leftFdbckSlider.setBounds(48, 328, 64, 64);
+    rightFdbckSlider.setBounds(550, 328, 64, 64);
 
-    //Left Range Slider
+
+        //Left Range Slider
     leftRangeSlider.setBounds(68, 220, 180, 40);
 	leftRangeSlider.setTextBoxStyle(RangeSlider::NoTextBox, false, 80, 20);
     leftRangeSlider.setRange(20, 20000);
     leftRangeSlider.setSkewFactorFromMidPoint(1000);
 
+        //right range slider
     rightRangeSlider.setBounds(500, 220, 180, 40);
     rightRangeSlider.setTextBoxStyle(RangeSlider::NoTextBox, false, 80, 20);
     rightRangeSlider.setRange(20, 20000);
@@ -381,19 +377,6 @@ void WillStereoDelayAudioProcessorEditor::sliderValueChanged (Slider* sliderThat
         *processor.rightMix_param = sliderThatWasMoved->getValue();
         //[/UserSliderCode_rightMixSlider]
     }
-    else if (sliderThatWasMoved == leftFdbckSlider)
-    {
-        //[UserSliderCode_leftFdbckSlider] -- add your slider handling code here..
-        *processor.leftFeedback_param = sliderThatWasMoved->getValue();
-
-        //[/UserSliderCode_leftFdbckSlider]
-    }
-    else if (sliderThatWasMoved == rightFdbckSlider)
-    {
-        //[UserSliderCode_rightFdbckSlider] -- add your slider handling code here..
-        *processor.rightFeedback_param = sliderThatWasMoved->getValue();
-        //[/UserSliderCode_rightFdbckSlider]
-    }
     else if (sliderThatWasMoved == leftDelayTimeslider)
     {
         //[UserSliderCode_leftDelayTimeslider] -- add your slider handling code here..
@@ -409,6 +392,19 @@ void WillStereoDelayAudioProcessorEditor::sliderValueChanged (Slider* sliderThat
     }
 
     //[UsersliderValueChanged_Post]
+    else if (sliderThatWasMoved == &leftFdbckSlider)
+    {
+        //[UserSliderCode_leftFdbckSlider] -- add your slider handling code here..
+        *processor.leftFeedback_param = sliderThatWasMoved->getValue();
+
+        //[/UserSliderCode_leftFdbckSlider]
+    }
+    else if (sliderThatWasMoved == &rightFdbckSlider)
+    {
+        //[UserSliderCode_rightFdbckSlider] -- add your slider handling code here..
+        *processor.rightFeedback_param = sliderThatWasMoved->getValue();
+        //[/UserSliderCode_rightFdbckSlider]
+    }
     else if (sliderThatWasMoved == &leftRangeSlider)
     {
         *processor.leftLPF_param = sliderThatWasMoved->getMaxValue();
@@ -628,8 +624,8 @@ void WillStereoDelayAudioProcessorEditor::timerCallback()
     leftMixSlider        ->setValue(*processor.leftMix_param, dontSendNotification);
     rightMixSlider        ->setValue(*processor.rightMix_param,     dontSendNotification);
 
-    leftFdbckSlider        ->setValue(*processor.leftFeedback_param,dontSendNotification);
-    rightFdbckSlider        ->setValue(*processor.rightFeedback_param, dontSendNotification);
+    leftFdbckSlider        .setValue(*processor.leftFeedback_param,dontSendNotification);
+    rightFdbckSlider        .setValue(*processor.rightFeedback_param, dontSendNotification);
     leftRangeSlider.setMinAndMaxValues(*processor.leftHPF_param, *processor.leftLPF_param);
     rightRangeSlider.setMinAndMaxValues(*processor.rightHPF_param, *processor.rightLPF_param);
     leftDelayLabel->setText(String(floor(processor.noteValDelayL)), sendNotification);
@@ -668,18 +664,6 @@ BEGIN_JUCER_METADATA
           virtualName="" explicitFocusOrder="0" pos="424 112 54 200" textboxoutline="8e989b"
           min="0.00000000000000000000" max="100.00000000000000000000" int="1.00000000000000000000"
           style="LinearVertical" textBoxPos="TextBoxBelow" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1.00000000000000000000"
-          needsCallback="1"/>
-  <SLIDER name="leftFdbckSlider" id="cf600b01a277d80f" memberName="leftFdbckSlider"
-          virtualName="" explicitFocusOrder="0" pos="48 328 112 96" textboxoutline="8e989b"
-          min="0.00000000000000000000" max="100.00000000000000000000" int="1.00000000000000000000"
-          style="RotaryVerticalDrag" textBoxPos="TextBoxBelow" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="1.00000000000000000000"
-          needsCallback="1"/>
-  <SLIDER name="rightFdbckSlider" id="629b24730594a142" memberName="rightFdbckSlider"
-          virtualName="" explicitFocusOrder="0" pos="536 328 96 96" textboxoutline="8e989b"
-          min="0.00000000000000000000" max="100.00000000000000000000" int="1.00000000000000000000"
-          style="RotaryVerticalDrag" textBoxPos="TextBoxBelow" textBoxEditable="1"
           textBoxWidth="80" textBoxHeight="20" skewFactor="1.00000000000000000000"
           needsCallback="1"/>
   <IMAGEBUTTON name="crotchet button" id="84b1d69ca2cb8008" memberName="crotchetButton"
