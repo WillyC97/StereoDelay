@@ -9,9 +9,14 @@
               file="../../Downloads/JUCE_JAPAN_DEMO-master/vol2/AudioPlugin/SimpleEqualizer/Resources/SimpleEqualizer_bypass.png"/>
         <FILE id="MA2RIV" name="SimpleEqualizer_knob.png" compile="0" resource="1"
               file="../../Downloads/JUCE_JAPAN_DEMO-master/vol2/AudioPlugin/SimpleEqualizer/Resources/SimpleEqualizer_knob.png"/>
+        <FILE id="QH9LnD" name="sslknob.png" compile="0" resource="1" file="../../Downloads/JUCE_JAPAN_DEMO-master/vol2/AudioPlugin/SimpleEqualizer/Resources/sslknob.png"/>
         <FILE id="exdWdH" name="switch_toggle_sub.png" compile="0" resource="1"
               file="../../Downloads/JUCE_JAPAN_DEMO-master/vol2/AudioPlugin/SimpleEqualizer/Resources/switch_toggle_sub.png"/>
       </GROUP>
+      <FILE id="TeprAM" name="FilmstripSlider.cpp" compile="1" resource="0"
+            file="Source/GUI/FilmstripSlider.cpp"/>
+      <FILE id="QJke2N" name="FilmstripSlider.h" compile="0" resource="0"
+            file="Source/GUI/FilmstripSlider.h"/>
       <FILE id="dYNvdx" name="FilmstripToggleButton.cpp" compile="1" resource="0"
             file="../../Downloads/JUCE_JAPAN_DEMO-master/vol2/AudioPlugin/SimpleEqualizer/Source/GUI/FilmstripToggleButton.cpp"/>
       <FILE id="f2QE43" name="FilmstripToggleButton.h" compile="0" resource="0"
