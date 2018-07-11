@@ -10,6 +10,7 @@
   Created with Projucer version: 5.2.1
 
   ------------------------------------------------------------------------------
+ 
 
   The Projucer is part of the JUCE library.
   Copyright (c) 2017 - ROLI Ltd.
@@ -136,7 +137,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
 
     addAndMakeVisible (comboBoxLeft = new ComboBox ("Left combo box"));
     comboBoxLeft->setEditableText (false);
-    comboBoxLeft->setJustificationType (Justification::centredLeft);
+    comboBoxLeft->setJustificationType (Justification::centred);
     comboBoxLeft->setTextWhenNothingSelected (String());
     comboBoxLeft->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
     comboBoxLeft->addItem (TRANS("1/16 triplet"), 1);
@@ -159,7 +160,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
 
     addAndMakeVisible (comboBoxRight = new ComboBox ("Right combo box"));
     comboBoxRight->setEditableText (false);
-    comboBoxRight->setJustificationType (Justification::centredLeft);
+    comboBoxRight->setJustificationType (Justification::centred);
     comboBoxRight->setTextWhenNothingSelected (String());
     comboBoxRight->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
     comboBoxRight->addItem (TRANS("1/16 triplet"), 1);
@@ -243,6 +244,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     leftFdbckSlider.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     leftFdbckSlider.setRange(0, 100);
     leftFdbckSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
+    leftFdbckSlider.setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     addAndMakeVisible(&leftFdbckSlider);
     leftFdbckSlider.addListener(this);
 
@@ -250,6 +252,7 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     rightFdbckSlider.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     rightFdbckSlider.setRange(0, 100);
     rightFdbckSlider.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
+    rightFdbckSlider.setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     addAndMakeVisible(&rightFdbckSlider);
     rightFdbckSlider.addListener(this);
 
@@ -258,9 +261,17 @@ WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillSt
     crossfeedLeft.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     crossfeedLeft.setRange(0, 100);
     crossfeedLeft.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
+    crossfeedLeft.setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     addAndMakeVisible(&crossfeedLeft);
     crossfeedLeft.addListener(this);
 
+    crossfeedRight.setImage(image_sslRotary, image_sslRotary.getHeight() / image_sslRotary.getWidth(), false);
+    crossfeedRight.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
+    crossfeedRight.setRange(0, 100);
+    crossfeedRight.setTextBoxStyle(Slider::TextBoxBelow, false, 80, 20);
+    crossfeedRight.setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
+    addAndMakeVisible(&crossfeedRight);
+    crossfeedRight.addListener(this);
 
 
 
@@ -336,6 +347,7 @@ void WillStereoDelayAudioProcessorEditor::resized()
 
         //crossfeed button
     crossfeedLeft.setBounds (224, 328, 64, 64);
+    crossfeedRight.setBounds (650, 328, 64, 64);
 
     leftFdbckSlider.setBounds(48, 328, 64, 64);
     rightFdbckSlider.setBounds(550, 328, 64, 64);
@@ -403,6 +415,18 @@ void WillStereoDelayAudioProcessorEditor::sliderValueChanged (Slider* sliderThat
     {
         //[UserSliderCode_rightFdbckSlider] -- add your slider handling code here..
         *processor.rightFeedback_param = sliderThatWasMoved->getValue();
+        //[/UserSliderCode_rightFdbckSlider]
+    }
+    else if (sliderThatWasMoved == &crossfeedLeft)
+    {
+        //[UserSliderCode_rightFdbckSlider] -- add your slider handling code here..
+        *processor.leftCrossLevel_param = sliderThatWasMoved->getValue();
+        //[/UserSliderCode_rightFdbckSlider]
+    }
+    else if (sliderThatWasMoved == &crossfeedRight)
+    {
+        //[UserSliderCode_rightFdbckSlider] -- add your slider handling code here..
+        *processor.rightCrossLevel_param = sliderThatWasMoved->getValue();
         //[/UserSliderCode_rightFdbckSlider]
     }
     else if (sliderThatWasMoved == &leftRangeSlider)
