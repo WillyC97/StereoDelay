@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Source/PluginEditor.cpp"
-            timestampString = "552427047.84735"
+            timestampString = "553035209.1496789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "WillStereoDelayAudioProcessorEditor::WillStereoDelayAudioProcessorEditor (WillStereoDelayAudioProcessor&amp; p)"
             landmarkType = "7">
          </BreakpointContent>

@@ -119,6 +119,11 @@ void DigitalDelayLine::setDelayTime(float dt)
     delayInMs = dt;
     setDelayTimeMS(sampleRate,delayInMs);
 }
+
+void DigitalDelayLine::setCrossFeedVal(float crossfeedval)
+{
+    crossFeedbackLevel = crossfeedval;
+}
 //-------------------------------------------
 
 float DigitalDelayLine::next(float input, float channel)
@@ -126,6 +131,8 @@ float DigitalDelayLine::next(float input, float channel)
     float xn = input;
     
     float yn = buffer[readIndex];
+    
+    
     
     if(readIndex == writeIndex && delayInSamples < 1.00)
     {
@@ -148,12 +155,14 @@ float DigitalDelayLine::next(float input, float channel)
     
     
     // write the input to the delay
-    buffer[writeIndex] = xn + feedback*yn;
+    buffer[writeIndex] = xn + feedback*yn + feedBackIn;
     // create the wet/dry mix and write to the output buffer
     // dry = 1 - wet
     
     yn = processChannelLPF(yn, channel);
     yn = processChannelHPF(yn, channel);
+    
+    
     float outputBuffer= wetLevel*yn + (1.0 - wetLevel)*xn;
     
     // incremnent the pointers and wrap if necessary

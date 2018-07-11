@@ -43,6 +43,7 @@ class WillStereoDelayAudioProcessorEditor  : public AudioProcessorEditor,
                                              public Slider::Listener,
                                              public Button::Listener,
                                              public ComboBox::Listener,
+
 public Timer
 {
 public:
@@ -101,6 +102,7 @@ private:
 
     FilmstripToggleButton Bypass;
     FilmstripSlider crossfeedLeft;
+    FilmstripSlider crossfeedRight;
     FilmstripSlider leftFdbckSlider;
     FilmstripSlider rightFdbckSlider;
     Image image_sslRotary;
