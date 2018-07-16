@@ -33,16 +33,22 @@ public:
     void resetDelay();
     void setDelayTimeMS(const int sr, const float d_ms);
 
-   
+    void setCrossFeedVal(float crossfeedval);
+    float getCurrentFeedbackOutput(){return (crossFeedbackLevel/100)*buffer[readIndex];}
+    void setCurrentFeedbackInput(float f){feedBackIn = f;}
     
     void setFeedback(float f);
     void setDelayTime(float dt);
     void setMixlevel(float mix);
+    //void setCrossFeeedbackLevel(float cfb);
     float next(float input, float channel);
     float linInterp(float x1, float x2, float y1, float y2, float x);
 
     float sampleRate;
-    float delayInSamples, fraction, delayInMs, MAX_DELAY_MS, wetLevel, feedback;
+    float delayInSamples, fraction, delayInMs, MAX_DELAY_MS, wetLevel, feedback, crossFeedbackLevel;
+    float feedBackIn;
+    
+    
    
     
 
@@ -60,6 +66,8 @@ public:
     double a0HP, a1HP, a2HP, b1HP, b2HP;
     double z1_ALP[2], z2_ALP[2];
     double z1_AHP[2], z2_AHP[2];
+    
+ 
     
 
     

@@ -36,7 +36,8 @@ WillStereoDelayAudioProcessor::WillStereoDelayAudioProcessor()
     addParameter(rightLPF_param = new AudioParameterInt("RightLPF", "Right LPF", 20, 20000, 20000));
     addParameter(leftHPF_param = new AudioParameterInt("LeftHPF", "Left HPF", 20, 20000, 20));
     addParameter(rightHPF_param = new AudioParameterInt("RightHPF", "Right HPF", 20, 20000, 20));
-    
+    addParameter(leftCrossLevel_param = new AudioParameterInt("LeftCross", "Left Cross", 0, 100, 0));
+    addParameter(rightCrossLevel_param = new AudioParameterInt("RightCross", "Right Feedback", 0, 100, 0));
 
 
 
@@ -188,6 +189,8 @@ void WillStereoDelayAudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
         
         delay_left.calcFilterHPF(SampleRate, *leftHPF_param);
         delay_right.calcFilterHPF(SampleRate, *rightHPF_param);
+        
+        //delay_left.setCrossFeeedbackLevel(*leftCrossLevel_param);
 
         
         playHead = this->getPlayHead();
@@ -210,6 +213,12 @@ void WillStereoDelayAudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
         delay_left.setMixlevel(*leftMix_param);
         delay_right.setMixlevel(*rightMix_param);
         
+        delay_left.setCrossFeedVal(*leftCrossLevel_param);
+        delay_right.setCrossFeedVal(*rightCrossLevel_param);
+        
+        delay_left.setCurrentFeedbackInput(delay_right.getCurrentFeedbackOutput());
+        delay_right.setCurrentFeedbackInput(delay_left.getCurrentFeedbackOutput());
+        
         
             
             float* channelDataLeft = buffer.getWritePointer(0);
@@ -219,6 +228,8 @@ void WillStereoDelayAudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
         
         
         channelDataLeft[i] = delay_left.next(channelDataLeft[i], 0);
+        
+        
             
             if(getTotalNumInputChannels() == 1 && getTotalNumOutputChannels() == 2){
                 channelDataRight[i] = channelDataLeft[i];
@@ -227,7 +238,8 @@ void WillStereoDelayAudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
             
             //Stereo In , Stereo Out
             if(getTotalNumInputChannels() == 2 && getTotalNumOutputChannels() == 2){
-                channelDataRight[i] = delay_right.next(channelDataRight[i], 1);
+                channelDataRight[i] = delay_right.next(0, 1);
+                
             }
             
         

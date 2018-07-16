@@ -68,11 +68,18 @@ public:
     AudioParameterInt* rightLPF_param;
     AudioParameterInt* leftHPF_param;
     AudioParameterInt* rightHPF_param;
+    AudioParameterInt* leftCrossLevel_param;
+    AudioParameterInt* rightCrossLevel_param;
+    
+    float ChannelLeftBuffer;
+    float ChannelRightBuffer;
+
     double mins_in_msL;
     double mins_in_msR;
     float noteValDelayL;
     float noteValDelayR;
     double BPM;
+
 
 
 private:
